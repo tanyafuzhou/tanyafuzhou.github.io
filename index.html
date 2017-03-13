@@ -70,7 +70,7 @@
     </nav>
     <div id="search-form-wrap">
       <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Pesquisar">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
         <input type="submit" value="" class="search-form-submit">
         <input name=tn type=hidden value="bds">
         <input name=cl type=hidden value="3">
@@ -124,7 +124,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h2><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/project.png" alt="project.png" title="">
+        <h1 id="一、项目目录"><a href="#一、项目目录" class="headerlink" title="一、项目目录"></a>一、项目目录</h1><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/project.png" alt="project.png" title="">
 <p>开发阶段</p>
 <ul>
 <li>利用 webpack 或者 webapck+express 或者 webpack+koa 起服务</li>
@@ -134,54 +134,54 @@
 <ul>
 <li>利用 webpack.prod.config.js 生成 build 目录</li>
 </ul>
-<h2 id="src-业务代码的设计"><a href="#src-业务代码的设计" class="headerlink" title="src 业务代码的设计"></a>src 业务代码的设计</h2><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/src.png" alt="src.png" title="">
-<h3 id="1-路由"><a href="#1-路由" class="headerlink" title="1.路由"></a>1.路由</h3><p>  这个不用多说，果断用 react-router 进行路由的控制。</p>
+<h1 id="二、src-业务代码的设计"><a href="#二、src-业务代码的设计" class="headerlink" title="二、src 业务代码的设计"></a>二、src 业务代码的设计</h1><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/src.png" alt="src.png" title="">
+<h2 id="1-路由"><a href="#1-路由" class="headerlink" title="1.路由"></a>1.路由</h2><p>  这个不用多说，果断用 react-router 进行路由的控制。</p>
 <ul>
 <li>App.js 中列出项目中所有的路由。</li>
 <li>index.js作为入口文件，只引用 App.js，以及其他 hack。</li>
 </ul>
-<h3 id="2-公共组件（components）"><a href="#2-公共组件（components）" class="headerlink" title="2.公共组件（components）"></a>2.公共组件（components）</h3><p>  公共的业务组件统一放入 components 目录</p>
+<h2 id="2-公共组件（components）"><a href="#2-公共组件（components）" class="headerlink" title="2.公共组件（components）"></a>2.公共组件（components）</h2><p>  公共的业务组件统一放入 components 目录</p>
 <p>  <em>注意</em></p>
 <p>  公共的含义是：多于一个页面用到的组件称为公共组件，如果只有一个页面用到的组件，不要放到 components 目录，放到对应页面的子目录。</p>
-<h3 id="3-高阶函数（hoc"><a href="#3-高阶函数（hoc" class="headerlink" title="3.高阶函数（hoc)"></a>3.高阶函数（hoc)</h3><p>  react 中有一个比较特色的功能，就是组件可以传入一个函数中生成新的高阶组件</p>
+<h2 id="3-高阶函数（hoc"><a href="#3-高阶函数（hoc" class="headerlink" title="3.高阶函数（hoc)"></a>3.高阶函数（hoc)</h2><p>  react 中有一个比较特色的功能，就是组件可以传入一个函数中生成新的高阶组件</p>
 <p>  常见的应用场景，通常是一些页面经常性的重复操作，可封装成一个高阶函数，进行统一处理，避免重复写代码</p>
 <ol>
 <li>一些页面一进入就会去加载数据，此时便可使用高阶函数</li>
 <li>如一些页面埋点的重复性操作</li>
 </ol>
-<h3 id="4-样式"><a href="#4-样式" class="headerlink" title="4.样式"></a>4.样式</h3><p>  项目中所有的样式都在 styles 目录下，该目录下的样式尽可能是公共组件的样式</p>
+<h2 id="4-样式"><a href="#4-样式" class="headerlink" title="4.样式"></a>4.样式</h2><p>  项目中所有的样式都在 styles 目录下，该目录下的样式尽可能是公共组件的样式</p>
 <p>  如果某些页面需要使用样式，直接使用 react 内置的 style功能，这样可以尽可能保持目录的纯净度。</p>
-<h3 id="5-redux"><a href="#5-redux" class="headerlink" title="5.redux"></a>5.redux</h3><p>  如果需要使用 redux，可分为 store reducers action 三个目录进行控制</p>
+<h2 id="5-redux"><a href="#5-redux" class="headerlink" title="5.redux"></a>5.redux</h2><p>  如果需要使用 redux，可分为 store reducers action 三个目录进行控制</p>
 <p>  切记 ，要分清 redux 的应用场景，不要滥用</p>
-<h3 id="6-辅助工具（utils）"><a href="#6-辅助工具（utils）" class="headerlink" title="6.辅助工具（utils）"></a>6.辅助工具（utils）</h3><p>  主要存放项目全局需要经常使用到的工具类</p>
-<h3 id="7-静态文件（data）"><a href="#7-静态文件（data）" class="headerlink" title="7.静态文件（data）"></a>7.静态文件（data）</h3><p>  主要存放静态常量等</p>
-<h2 id="pages-目录"><a href="#pages-目录" class="headerlink" title="pages 目录"></a>pages 目录</h2><p>该目录与业务场景强相关，故在此先模拟个业务场景</p>
-<h3 id="1-业务背景"><a href="#1-业务背景" class="headerlink" title="1.业务背景"></a>1.业务背景</h3><p>有三个角色 ：角色 A、角色 B、角色O(管理员)</p>
+<h2 id="6-辅助工具（utils）"><a href="#6-辅助工具（utils）" class="headerlink" title="6.辅助工具（utils）"></a>6.辅助工具（utils）</h2><p>  主要存放项目全局需要经常使用到的工具类</p>
+<h2 id="7-静态文件（data）"><a href="#7-静态文件（data）" class="headerlink" title="7.静态文件（data）"></a>7.静态文件（data）</h2><p>  主要存放静态常量等</p>
+<h1 id="三、pages-目录"><a href="#三、pages-目录" class="headerlink" title="三、pages 目录"></a>三、pages 目录</h1><p>该目录与业务场景强相关，故在此先模拟个业务场景</p>
+<h2 id="1-业务背景"><a href="#1-业务背景" class="headerlink" title="1.业务背景"></a>1.业务背景</h2><p>有三个角色 ：角色 A、角色 B、角色O(管理员)</p>
 <p>有3个业务场景：场景 I、场景 II、场景 III</p>
 <p>其中，场景 I 只有角色 A 可以访问，场景 II 只有角色 O 可以访问，场景 III 所有角色均可访问，则我们可以按照如下方式构建目录</p>
 <p>其中场景 III index.js中，根据角色判断加载哪个角色的目录</p>
-<h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h3><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/pages.png" alt="pages.png" title="">
+<h2 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h2><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/pages.png" alt="pages.png" title="">
 <p>角色和场景是一对一关系的时候，可以建以角色为根目录，场景为子目录的目录</p>
 <p>角色和场景是多对一的关系的时候，可以建以场景为根目录，角色为子目录的目录。</p>
-<h3 id="3-业务组件"><a href="#3-业务组件" class="headerlink" title="3.业务组件"></a>3.业务组件</h3><p>当页面中有该页面独有的业务组件时，请勿将其放入公共 components 组件目录，这样路径太远会不方便查找。</p>
+<h2 id="3-业务组件"><a href="#3-业务组件" class="headerlink" title="3.业务组件"></a>3.业务组件</h2><p>当页面中有该页面独有的业务组件时，请勿将其放入公共 components 组件目录，这样路径太远会不方便查找。</p>
 <p>建议将该页面建一个目录，对应的业务组件放在该页面下</p>
 <img src="/2017/03/12/浅谈大型%20react%20项目前端构建/A.png" alt="A.png" title="">
 <p>场景 I 的部分伪代码如下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//index.js</span></div><div class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">'./组件 A'</span></div><div class="line"></div><div class="line"><span class="comment">//组件 A</span></div><div class="line"><span class="keyword">import</span> A<span class="number">.1</span> <span class="keyword">from</span> <span class="string">'./子组件 A.1'</span></div></pre></td></tr></table></figure>
-<h4 id="这里有个小技巧"><a href="#这里有个小技巧" class="headerlink" title="这里有个小技巧"></a>这里有个小技巧</h4><p>要充分利用目录下的 index.js文件，它作为目录的入口</p>
+<h3 id="这里有个小技巧"><a href="#这里有个小技巧" class="headerlink" title="这里有个小技巧"></a>这里有个小技巧</h3><p>要充分利用目录下的 index.js文件，它作为目录的入口</p>
 <p>比如当你遇到业务升级，增加新功能时，可以按上述方式将页面转成目录。</p>
 <img src="/2017/03/12/浅谈大型%20react%20项目前端构建/B.png" alt="B.png" title="">
 <p>这样做的好处是:</p>
 <p>import 时可以不用加<code>./index.js</code>,不需要改import 的代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import B from &apos;./B&apos;</div></pre></td></tr></table></figure>
-<h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><p>不要滥用 redux</p>
+<h1 id="四、redux"><a href="#四、redux" class="headerlink" title="四、redux"></a>四、redux</h1><p>不要滥用 redux</p>
 <p>项目中当需要全局使用到的变量等的时候，才需要用到 redux。</p>
 <p>利用 redux 可以将这个变量注入到你需要注入的页面。</p>
-<h2 id="代码技巧"><a href="#代码技巧" class="headerlink" title="代码技巧"></a>代码技巧</h2><p>巧用export default</p>
+<h1 id="五、代码技巧"><a href="#五、代码技巧" class="headerlink" title="五、代码技巧"></a>五、代码技巧</h1><p>巧用export default</p>
 <p>如</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//a.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> xxx</div><div class="line"><span class="keyword">export</span> xxx2</div><div class="line"></div><div class="line"><span class="comment">//引用时</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> xxx,&#123;xxx2&#125; <span class="keyword">from</span> <span class="string">'a'</span></div></pre></td></tr></table></figure>
-<h2 id="构建工具（webpack）"><a href="#构建工具（webpack）" class="headerlink" title="构建工具（webpack）"></a>构建工具（webpack）</h2><p>使用 webpack 配置时，有些小技巧可以分享</p>
-<h3 id="1-alias"><a href="#1-alias" class="headerlink" title="1.alias"></a>1.<code>alias</code></h3><p>开发时，引用其他目录的文件时，经常出现以下代码</p>
+<h1 id="六、构建工具（webpack）"><a href="#六、构建工具（webpack）" class="headerlink" title="六、构建工具（webpack）"></a>六、构建工具（webpack）</h1><p>使用 webpack 配置时，有些小技巧可以分享</p>
+<h2 id="1-alias"><a href="#1-alias" class="headerlink" title="1.alias"></a>1.<code>alias</code></h2><p>开发时，引用其他目录的文件时，经常出现以下代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// index.js</span></div><div class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">'../../../a'</span></div></pre></td></tr></table></figure>
 <p>当你的目录结构变动时，修改相对路径对你来说，无疑就是一场灾难</p>
 <p>其实你可以这么干，指定绝对路径</p>
@@ -189,7 +189,7 @@
 <p>然后你就可以</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// index.js</span></div><div class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">'_/a'</span></div></pre></td></tr></table></figure>
 <p>当 index.js 在目录中的位置变化时，你就可以不需要修改 index.js的任何代码了</p>
-<h3 id="2-external"><a href="#2-external" class="headerlink" title="2.external"></a>2.<code>external</code></h3><p>为了避免react等基础库重复构建，可以利用 webpack的<code>externals</code>参数，避免重复构建。</p>
+<h2 id="2-external"><a href="#2-external" class="headerlink" title="2.external"></a>2.<code>external</code></h2><p>为了避免react等基础库重复构建，可以利用 webpack的<code>externals</code>参数，避免重复构建。</p>
 <p>这样，您需要构建的代码就只有 src 目录下的文件，且文件体积很小。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">externals: &#123; <span class="string">'react'</span>: <span class="string">'React'</span>, <span class="string">'react-dom'</span>: <span class="string">'ReactDOM'</span>, <span class="string">'react-router'</span>: <span class="string">'ReactRouter'</span> &#125;</div></pre></td></tr></table></figure>
 <p>但这种方式目前来说有缺陷</p>
@@ -202,7 +202,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://tanyafuzhou.com/2017/03/12/浅谈大型 react 项目前端构建/" data-id="cj06u3zmb0000lohodmw4c8p2" class="article-share-link">Compartilhar</a>
+        <a data-url="http://tanyafuzhou.com/2017/03/12/浅谈大型 react 项目前端构建/" data-id="cj07fc13f0000fqd89gweysnv" class="article-share-link">Share</a>
       
 
       
