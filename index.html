@@ -125,18 +125,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="一、项目目录"><a href="#一、项目目录" class="headerlink" title="一、项目目录"></a>一、项目目录</h1><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/project.png" alt="project.png" title="">
-<h2 id="1-开发阶段"><a href="#1-开发阶段" class="headerlink" title="1.开发阶段"></a>1.开发阶段</h2><ul>
-<li>利用 webpack 或者 webapck+express 或者 webpack+koa 起服务</li>
-<li>业务代码均在 src 目录下修改，其他文件不动</li>
-</ul>
-<h2 id="2-发布阶段"><a href="#2-发布阶段" class="headerlink" title="2.发布阶段"></a>2.发布阶段</h2><ul>
-<li>利用 webpack.prod.config.js 生成 build 目录</li>
-</ul>
+<p>项目的构建方式大体上是普遍标准的模式，src 是业务开发目录，build 是构建后的目录。</p>
+<p>构建工具采用 webpack+express 或 webpack+koa 的方式。</p>
 <h1 id="二、src-业务代码的设计"><a href="#二、src-业务代码的设计" class="headerlink" title="二、src 业务代码的设计"></a>二、src 业务代码的设计</h1><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/src.png" alt="src.png" title="">
-<h2 id="1-路由"><a href="#1-路由" class="headerlink" title="1.路由"></a>1.路由</h2><p>  这个不用多说，果断用 react-router 进行路由的控制。</p>
+<h2 id="1-路由"><a href="#1-路由" class="headerlink" title="1.路由"></a>1.路由</h2><p>  这个不用多说，果断用 react-router 进行路由的控制。这里要对路由的构建目录特别说下：</p>
 <ul>
 <li>App.js 中列出项目中所有的路由。</li>
-<li>index.js作为入口文件，只引用 App.js，以及其他 hack。</li>
+<li>index.js作为项目的入口文件，只引用 App.js，以及其他 hack。</li>
 </ul>
 <h2 id="2-公共组件（components）"><a href="#2-公共组件（components）" class="headerlink" title="2.公共组件（components）"></a>2.公共组件（components）</h2><p>  公共的业务组件统一放入 components 目录</p>
 <p>  <em>注意</em></p>
@@ -156,10 +151,9 @@
 <h1 id="三、pages-目录"><a href="#三、pages-目录" class="headerlink" title="三、pages 目录"></a>三、pages 目录</h1><p>该目录与业务场景强相关，故在此先模拟个业务场景</p>
 <h2 id="1-业务背景"><a href="#1-业务背景" class="headerlink" title="1.业务背景"></a>1.业务背景</h2><p>有三个角色 ：角色 A、角色 B、角色O(管理员)</p>
 <p>有3个业务场景：场景 I、场景 II、场景 III</p>
-<p>其中，场景 I 只有角色 A 可以访问，场景 II 只有角色 O 可以访问，场景 III 所有角色均可访问，则我们可以按照如下方式构建目录</p>
-<p>其中场景 III index.js中，根据角色判断加载哪个角色的目录</p>
+<p>其中，场景 I 只有角色 A 可以访问，场景 II 只有角色 O 可以访问，场景 III 所有角色均可访问</p>
 <h2 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h2><img src="/2017/03/12/浅谈大型%20react%20项目前端构建/pages.png" alt="pages.png" title="">
-<p>角色和场景是一对一关系的时候，可以建以角色为根目录，场景为子目录的目录</p>
+<p>角色和场景是一对一关系的时候，可以建以角色为根目录，场景为子目录的目录<br>其中场景 III index.js中，根据角色判断加载哪个角色的目录</p>
 <p>角色和场景是多对一的关系的时候，可以建以场景为根目录，角色为子目录的目录。</p>
 <h2 id="3-业务组件"><a href="#3-业务组件" class="headerlink" title="3.业务组件"></a>3.业务组件</h2><p>当页面中有该页面独有的业务组件时，请勿将其放入公共 components 组件目录，这样路径太远会不方便查找。</p>
 <p>建议将该页面建一个目录，对应的业务组件放在该页面下</p>
@@ -200,7 +194,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://tanyafuzhou.com/2017/03/12/浅谈大型 react 项目前端构建/" data-id="cj07ffjgv0000jxd8t4bcw4nb" class="article-share-link">Share</a>
+        <a data-url="http://tanyafuzhou.com/2017/03/12/浅谈大型 react 项目前端构建/" data-id="cj0j52afe0005x0d84uo9136f" class="article-share-link">Share</a>
       
 
       
